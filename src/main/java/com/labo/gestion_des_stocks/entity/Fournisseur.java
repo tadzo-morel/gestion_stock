@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -22,5 +23,5 @@ public class Fournisseur {
     private String immatriculation;
     @ManyToMany
     @JoinTable(name="produitFournisseur")
-    List<Produit> produits=new ArrayList<Produit>();
+    Set<Produit> produits;
 }

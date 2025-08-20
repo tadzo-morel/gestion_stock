@@ -1,11 +1,6 @@
 package com.labo.gestion_des_stocks.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +19,10 @@ public class Commande {
     @OneToOne(mappedBy = "commande",fetch = FetchType.LAZY)
     private Facture facture;
     private String numeroCommande;
+
+    @ManyToMany
+    @JoinColumn(name = "id_user")
+    private User user;
 
 
 }
