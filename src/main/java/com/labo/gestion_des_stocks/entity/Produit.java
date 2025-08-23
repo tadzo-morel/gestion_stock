@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -29,11 +30,14 @@ public class Produit {
     @Column(name = "prix",length = 250)
     private float prix;
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.LAZY)
-    private List<Fournisseur> fournisseurs =new ArrayList<Fournisseur>();
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    private List<Fournisseur> fournisseurs=new ArrayList<Fournisseur>() ;
 
     @ManyToOne
     @JoinColumn(name = "id_categorie")
     private Categorie categorie;
-
+    
+    @OneToMany(mappedBy = "produit",fetch = FetchType.EAGER)
+    private Set<ProduitCommande> produits;
+    
 }
